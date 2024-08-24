@@ -1,0 +1,143 @@
+body {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+}
+/* 
+* Header
+*/
+header {
+    .navbar-nav {
+        .nav-item {
+            width: 20px;
+
+            button {
+                width: 100%;
+
+                img {
+                    width: 100%;
+                    height: auto;
+                }
+            }
+        }
+    }
+}
+
+/*
+ * Sidebar
+ */
+
+aside {
+    max-width: 250px !important;
+    height: 94.99vh;
+
+    &.sidebar {
+        .nav-link {
+            font-size: .875rem;
+            font-weight: 500;
+            color: var(--bs-dark);
+            padding-top: 12px;
+            padding-bottom: 12px;
+            display: flex !important;
+            flex-direction: row !important;
+            align-items: center !important;
+
+            &.active {
+                color: var(--bs-dark);
+                font-weight: bold;
+                background-color: var(--bs-tertiary-bg);
+                background-image: none;
+            }
+
+            span.icon {
+                width: 15%;
+
+                img {
+                    width: 100%;
+                    height: auto;
+                }
+            }
+        }
+
+    }
+
+    .sidebar-heading {
+        font-size: .75rem;
+    }
+
+    .offcanvas-md {
+        .offcanvas-body {
+            height: 92.99vh;
+        }
+    }
+
+    .dropdown {
+        .dropdown-toggle {
+            color: var(--bs-dark);
+
+            span {
+                font-size: .875rem;
+            }
+        }
+    }
+
+}
+
+/* 
+* Main
+*/
+main {
+    #main-header {
+        nav {
+            .breadcrumb {
+                .breadcrumb-item {
+                    a {
+                        img {
+                            width: 25px;
+                            height: 25px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@include media-breakpoint-up(md) {
+    aside {
+        &.sidebar {
+            .offcanvas-lg {
+                position: -webkit-sticky;
+                position: sticky;
+                top: 48px;
+            }
+        }
+    }
+}
+
+@include media-breakpoint-down(md) {
+    aside {
+        &.sidebar {
+            height: auto;
+        }
+    }
+
+    main {
+        #main-header {
+            nav {
+                .breadcrumb {
+                    .breadcrumb-item {
+                        font-size: 12px;
+
+                        a {
+                            img {
+                                width: 20px;
+                                height: 20px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

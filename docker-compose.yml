@@ -1,0 +1,35 @@
+version: "3.8"
+
+name: infokes 
+
+services:
+  dev:
+    container_name: infokes-cc
+    build:
+      context: .
+      dockerfile: ${DEV_DOCKERFILE}
+      target: base
+    restart: always
+    ports:
+      - "${DEV_BE_PORT:-80}:80"
+      - "${DEV_FE_PORT:-8080}:8080"
+      # - "${DEV_VITE_PORT:-5173}:${DEV_VITE_PORT:-5173}"
+    volumes:
+      - ${DEV_APP_VOLUME:-./app}
+      - ${DEV_INI_VOLUME:-./.deploy/php}
+      - ${DEV_NGINX_VOLUME:-./.deploy/nginx:/etc/nginx}
+    networks:
+      - codechallenge
+      - database_mysql
+      - tools_cache
+      - tools_mailer
+
+networks:
+  codechallenge:
+    driver: "bridge"
+  database_mysql:
+    external: true
+  tools_cache:
+    external: true
+  tools_mailer:
+    external: true
