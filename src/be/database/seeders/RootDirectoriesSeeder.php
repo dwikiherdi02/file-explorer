@@ -18,19 +18,19 @@ class RootDirectoriesSeeder extends Seeder
         ],
         [
             'name' => 'Music',
-            'image' => 'storage/icons/music-folder',
+            'image' => 'storage/icons/music-folder.png',
             'breadcrumbs' => '',
             'is_root' => true,
         ],
         [
             'name' => 'Pictures',
-            'image' => 'storage/icons/picture-folder',
+            'image' => 'storage/icons/picture-folder.png',
             'breadcrumbs' => '',
             'is_root' => true,
         ],
         [
             'name' => 'Videos',
-            'image' => 'storage/icons/video-folder',
+            'image' => 'storage/icons/video-folder.png',
             'breadcrumbs' => '',
             'is_root' => true,
         ],
