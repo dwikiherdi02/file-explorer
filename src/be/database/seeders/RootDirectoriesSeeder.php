@@ -13,25 +13,21 @@ class RootDirectoriesSeeder extends Seeder
         [
             'name' => 'Documents',
             'image' => 'storage/icons/document-folder.png',
-            'breadcrumbs' => '',
             'is_root' => true,
         ],
         [
             'name' => 'Music',
             'image' => 'storage/icons/music-folder.png',
-            'breadcrumbs' => '',
             'is_root' => true,
         ],
         [
             'name' => 'Pictures',
             'image' => 'storage/icons/picture-folder.png',
-            'breadcrumbs' => '',
             'is_root' => true,
         ],
         [
             'name' => 'Videos',
             'image' => 'storage/icons/video-folder.png',
-            'breadcrumbs' => '',
             'is_root' => true,
         ],
     ];
@@ -49,9 +45,10 @@ class RootDirectoriesSeeder extends Seeder
             $directory = Directory::create($data);
 
             $directory->fill([
-                'breadcrumbs' => [
-                    strtolower($directory->name) => $directory->name
+                'breadcrumbs_json' => [
+                    $directory->id => $directory->name
                 ],
+                'breadcrumbs_string' => $directory->name
             ])->save();
         }
     }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\DirectoryRequest;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response;
 use Facades\App\Repositories\DirectoryRepository;
 
@@ -13,8 +14,8 @@ class DirectoryController extends Controller
     public function listRoot(): JsonResponse
     {
         $data = DirectoryRepository::findAll(
-            selects: ['id', 'name', 'image', 'breadcrumbs'],
-            wheres: ['is_root' => 0],
+            selects: ['id', 'name', 'image', DB::raw('breadcrumbs_json AS breadcrumbs')],
+            wheres: ['is_root' => 1],
             limit: 0,
         )->toArray();
 
@@ -54,9 +55,9 @@ class DirectoryController extends Controller
         }
 
         if (empty($request->input('subid'))) {
-            $currentDir = DirectoryRepository::findByID(id: $request->input('rid'), selects: ['id', 'parent_id', 'name', 'image', 'breadcrumbs']);
+            $currentDir = DirectoryRepository::findByID(id: $request->input('rid'), selects: ['id', 'parent_id', 'name', 'image', DB::raw('breadcrumbs_json as breadcrumbs')]);
         } else {
-            $currentDir = DirectoryRepository::findByID(id: $request->input('subid'), selects: ['id', 'parent_id', 'name', 'image', 'breadcrumbs']);
+            $currentDir = DirectoryRepository::findByID(id: $request->input('subid'), selects: ['id', 'parent_id', 'name', 'image', DB::raw('breadcrumbs_json as breadcrumbs')]);
         }
 
 
@@ -111,10 +112,11 @@ class DirectoryController extends Controller
             );
         }
 
-        $parentID = DirectoryRepository::findByID($request->get('parent_id'));
+        // $parentID = DirectoryRepository::findByID($request->get('parent_id'));
         $data = [
-            'parent_id' => $parentID->id,
-            'root_dir' => ($parentID->root_dir) ? $parentID->root_dir : $parentID->name,
+            // 'parent_id' => $parentID->id,
+            // 'root_id' => ($parentID->root_dir) ? $parentID->root_dir : $parentID->name,
+            'parent_id' => $request->get('parent_id'),
             'name' => $request->get('folder_name'),
             'is_root' => false,
         ];

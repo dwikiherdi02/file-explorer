@@ -22,12 +22,14 @@ class Directory extends Model
         'root_dir',
         'name',
         'image',
-        'breadcrumbs',
+        'breadcrumbs_json',
+        'breadcrumbs_string',
         'is_root',
     ];
     protected function casts(): array
     {
         return [
+            'breadcrumbs_json' => Json::class,
             'breadcrumbs' => Json::class,
         ];
     }
@@ -44,10 +46,10 @@ class Directory extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function rootdir(): HasOne
-    {
-        return $this->hasOne(Directory::class, 'name', 'root_dir');
-    }
+    // public function rootdir(): HasOne
+    // {
+    //     return $this->hasOne(Directory::class, 'name', 'root_dir');
+    // }
 
     /**
      * Get all of the sub directories for the Directory

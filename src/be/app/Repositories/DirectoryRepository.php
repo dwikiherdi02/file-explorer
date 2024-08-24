@@ -106,11 +106,14 @@ class DirectoryRepository
 
                 $model->fill($data)->save();
 
-                $breadcrumbs = array_merge($model->parentdir->breadcrumbs, [$model->id => $model->name]);
+                $parentID = $model->parentdir;
+
+                $breadcrumbs = array_merge($parentID->breadcrumbs_json, [$model->id => $model->name]);
 
                 $model->fill([
-                    'root_id' => $model->rootdir->id,
-                    'breadcrumbs' => $breadcrumbs
+                    'root_id' => ($parentID->root_id) ? $parentID->root_id : $parentID->id,
+                    'breadcrumbs_json' => $breadcrumbs,
+                    'breadcrumbs_string' => implode('/', $breadcrumbs),
                 ])->save();
 
                 DB::commit();

@@ -14,16 +14,17 @@ return new class extends Migration {
             $table->uuid('id');
             $table->uuid('parent_id')->nullable();
             $table->uuid('root_id')->nullable();
-            $table->enum('root_dir', ['Documents', 'Music', 'Pictures', 'Videos'])->nullable();
+            // $table->enum('root_dir', ['Documents', 'Music', 'Pictures', 'Videos'])->nullable();
             $table->string('name', 255)->unique();
             $table->string('image', 100)->default('storage/icons/folder.png');
-            $table->json('breadcrumbs')->nullable();
+            $table->json('breadcrumbs_json')->nullable();
+            $table->text('breadcrumbs_string')->nullable();
             $table->boolean('is_root')->default(false);
             $table->timestamps();
             $table->primary('id', 'directories_id_primary');
             $table->index('parent_id', 'directories_parent_id_index');
             $table->index('root_id', 'directories_root_id_index');
-            $table->index('root_dir', 'directories_root_dir_index');
+            // $table->index('root_dir', 'directories_root_dir_index');
         });
     }
 
