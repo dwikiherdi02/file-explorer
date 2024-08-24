@@ -1,5 +1,4 @@
 <script setup>
-
 import imgBarsMenu from '../assets/icons/bars-menu.png'
 
 </script>
@@ -9,9 +8,7 @@ import imgBarsMenu from '../assets/icons/bars-menu.png'
     <div class="container-fluid">
       <div class="d-flex justify-content-between w-100">
         <div>
-          <a class="navbar-brand fw-bolder" href="#">
-            File Explorer
-          </a>
+          <RouterLink class="navbar-brand fw-bolder" to="/">File Explorer</RouterLink>
         </div>
         <div>
           <ul class="navbar-nav flex-row d-md-none">

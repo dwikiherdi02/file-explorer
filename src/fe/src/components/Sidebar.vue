@@ -18,44 +18,44 @@ import imgVideo from '../assets/icons/video-folder.png'
       <div class="offcanvas-body d-md-flex flex-column p-0 overflow-y-auto">
         <ul class="nav nav-pills flex-column mb-auto">
           <li class="nav-item">
-            <a class="nav-link gap-2" href="#">
+            <RouterLink class="nav-link gap-2" to="/f/documents">
               <span class="icon">
                 <img :src="imgDocument" alt="Document">
               </span>
               <span class="text">
                 Documents
               </span>
-            </a>
+            </RouterLink>
           </li>
           <li class="nav-item">
-            <a class="nav-link gap-2" href="#">
+            <RouterLink class="nav-link gap-2" to="/f/music">
               <span class="icon">
                 <img :src="imgMusic" alt="Music">
               </span>
               <span class="text">
                 Music
               </span>
-            </a>
+            </RouterLink>
           </li>
           <li class="nav-item">
-            <a class="nav-link gap-2" href="#">
+            <RouterLink class="nav-link gap-2" to="/f/pictures">
               <span class="icon">
                 <img :src="imgPicture" alt="Picture">
               </span>
               <span class="text">
                 Pictures
               </span>
-            </a>
+            </RouterLink>
           </li>
           <li class="nav-item">
-            <a class="nav-link gap-2" href="#">
+            <RouterLink class="nav-link gap-2" to="/f/videos">
               <span class="icon">
                 <img :src="imgVideo" alt="Video">
               </span>
               <span class="text">
                 Videos
               </span>
-            </a>
+            </RouterLink>
           </li>
         </ul>
       </div>
