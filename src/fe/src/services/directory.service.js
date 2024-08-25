@@ -49,6 +49,30 @@ class DirectoryService {
       return [results, errors]
     })
   }
+
+  uploadFile(parentID, file) {
+    const formData = new FormData();
+    formData.append('parent_id', parentID)
+    formData.append('file', file)
+
+    return axios.post(`${API_URL}/files`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+    })
+    .then((responses) => {
+      console.log(responses)
+      let {code, status, results, errors} = responses.data
+      return [results, errors]
+    })
+    .catch((error) => {
+      let {code, status, results, errors} = error.response.data
+      console.log(results)
+      console.log(errors)
+      return [results, errors]
+    })
+
+  }
 }
 
 export default new DirectoryService();

@@ -25,5 +25,12 @@ export const useDirectoryStore = defineStore('directory', {
           }
         )
       },
+      uploadFile(parentID, file) {
+        return DirectoryService.uploadFile(parentID, file).then(
+          (responses) => {
+            return responses
+          }
+        )
+      },
     }
 });

@@ -78,7 +78,7 @@ watch(() => route.query, async (newQuery, oldQuery) => {
     
     <!-- CommandBar -->
     <div class="col mb-md-4">
-      <CommandBar :onLoad="onLoad" :parentID="pageDesc.id" @onCreateFolderSuccess="load(route.query.rid, route.query.subid)" />
+      <CommandBar :onLoad="onLoad" :parentID="pageDesc.id" @onCreateFolderSuccess="load(route.query.rid, route.query.subid)" @onUploadFileSuccess="load(route.query.rid, route.query.subid)" />
     </div>
     <!-- ./CommandBar -->
 
@@ -99,7 +99,7 @@ watch(() => route.query, async (newQuery, oldQuery) => {
         </div>
 
         <div v-if="onLoad == 0" v-for="list in listDir" class="col-12 col-sm-6 col-md-4">
-          <router-link :to="{ name: 'to_folder', query: { rid: list.root_id, subid: list.id } }">
+          <router-link v-if="list.type == 'dir'" :to="{ name: 'to_folder', query: { rid: list.root_id, subid: list.id } }">
             <div class="card card-folder border-0">
               <div class="card-body d-flex flex-row align-items-stretch pt-2 ps-0 pt-md-0 ps-md-3">
                 <div class="icon align-self-center pe-2">
@@ -109,6 +109,16 @@ watch(() => route.query, async (newQuery, oldQuery) => {
               </div>
             </div>
           </router-link>
+          <a v-if="list.type == 'file'" :href="list.link" target="_blank">
+            <div class="card card-folder border-0">
+              <div class="card-body d-flex flex-row align-items-stretch pt-2 ps-0 pt-md-0 ps-md-3">
+                <div class="icon align-self-center pe-2">
+                  <img :src="list.icon" :alt="list.filename_ori" width="30" height="30">
+                </div>
+                <div class="text align-self-center fw-medium">{{ list.filename_ori }}</div>
+              </div>
+            </div>
+          </a>
         </div>
 
         <div v-if="onLoad == 1" v-for="n in 3" class="col-12 col-sm-6 col-md-4">
