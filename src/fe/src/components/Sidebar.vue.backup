@@ -1,0 +1,46 @@
+<script setup>
+// Components
+import SidebarList from './SidebarList.vue'
+
+</script>
+
+<template>
+  <aside class="sidebar border-0 col-md-3 col-lg-2 py-2 bg-white">
+    <div class="offcanvas-md offcanvas-end bg-white" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title fw-bolder" id="sidebarMenuLabel">File Explorer</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu"
+          aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body d-md-flex flex-column p-0 overflow-y-auto">
+        <ul class="nav nav-pills flex-column mb-auto">
+          <KeepAlive>
+            <Suspense>
+              <template #default>
+                <SidebarList />
+              </template>
+              <template #fallback>
+                <li class="nav-item placeholder-glow mb-2"><a class="nav-link gap-2 placeholder" href="#">
+                  <span class="icons placeholder"></span>
+                  <span class="text placeholder"></span>
+                </a></li>
+                <li class="nav-item placeholder-glow mb-2"><a class="nav-link gap-2 placeholder" href="#">
+                  <span class="icons placeholder"></span>
+                  <span class="text placeholder"></span>
+                </a></li>
+                <li class="nav-item placeholder-glow mb-2"><a class="nav-link gap-2 placeholder" href="#">
+                  <span class="icons placeholder"></span>
+                  <span class="text placeholder"></span>
+                </a></li>
+                <li class="nav-item placeholder-glow mb-2"><a class="nav-link gap-2 placeholder" href="#">
+                  <span class="icons placeholder"></span>
+                  <span class="text placeholder"></span>
+                </a></li>
+              </template>
+            </Suspense>
+          </KeepAlive>
+        </ul>
+      </div>
+    </div>
+  </aside>
+</template>

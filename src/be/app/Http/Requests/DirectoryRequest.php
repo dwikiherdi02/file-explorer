@@ -31,7 +31,7 @@ class DirectoryRequest extends FormRequest
         return [
             // 'rid' => ['bail', 'required', Rule::exists(Directory::class, 'root_id')],
             'rid' => ['bail', 'required', Rule::exists(Directory::class, 'id')],
-            'subid' => ['bail', Rule::exists(Directory::class, 'id')],
+            'subid' => ['bail', 'nullable', Rule::exists(Directory::class, 'id')],
         ];
     }
 

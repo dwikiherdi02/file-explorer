@@ -1,6 +1,8 @@
 import { createApp } from 'vue'
-import App from './App.vue'
+import { createPinia } from 'pinia'
 import { createWebHistory , createRouter } from 'vue-router'
+
+import App from './App.vue'
 
 // Import our custom CSS
 import '../scss/styles.scss'
@@ -8,12 +10,14 @@ import '../scss/styles.scss'
 // Import only the Bootstrap components we need
 import { Popover } from 'bootstrap';
 
+const pinia = createPinia()
+
 // Import pages
 import HomePage from '../pages/HomePage.vue'
 import FolderPage from '../pages/FolderPage.vue'
 const routes = [
-  { path: '/', component: HomePage },
-  { path: '/f/:folder', component: FolderPage },
+  { name:'home', path: '/', component: HomePage },
+  { name:'to_folder', path: '/f', component: FolderPage },
 ]
 
 const router = createRouter({
@@ -22,6 +26,7 @@ const router = createRouter({
 })
 
 createApp(App)
+  .use(pinia)
   .use(router)
   .mount('#app')
 

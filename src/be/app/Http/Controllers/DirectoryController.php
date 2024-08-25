@@ -14,7 +14,8 @@ class DirectoryController extends Controller
     public function listRoot(): JsonResponse
     {
         $data = DirectoryRepository::findAll(
-            selects: ['id', 'name', 'image', DB::raw('breadcrumbs_json AS breadcrumbs')],
+            // selects: ['id', 'name', 'image', DB::raw('breadcrumbs_json AS breadcrumbs')],
+            selects: ['id', 'name', 'image'],
             wheres: ['is_root' => 1],
             limit: 0,
         )->toArray();
@@ -25,6 +26,7 @@ class DirectoryController extends Controller
                     'code' => Response::HTTP_OK,
                     'message' => Response::$statusTexts[Response::HTTP_OK],
                     'results' => $data,
+                    'errors' => [],
                 ],
                 Response::HTTP_OK
             );
@@ -34,6 +36,7 @@ class DirectoryController extends Controller
                     'code' => Response::HTTP_NOT_FOUND,
                     'message' => Response::$statusTexts[Response::HTTP_NOT_FOUND],
                     'results' => [],
+                    'errors' => [],
                 ],
                 Response::HTTP_NOT_FOUND
             );
@@ -48,6 +51,7 @@ class DirectoryController extends Controller
                 [
                     'code' => Response::HTTP_BAD_REQUEST,
                     'message' => Response::$statusTexts[Response::HTTP_BAD_REQUEST],
+                    'results' => [],
                     'errors' => $errors,
                 ],
                 Response::HTTP_BAD_REQUEST
@@ -57,7 +61,7 @@ class DirectoryController extends Controller
         if (empty($request->input('subid'))) {
             $currentDir = DirectoryRepository::findByID(id: $request->input('rid'), selects: ['id', 'parent_id', 'name', 'image', DB::raw('breadcrumbs_json as breadcrumbs')]);
         } else {
-            $currentDir = DirectoryRepository::findByID(id: $request->input('subid'), selects: ['id', 'parent_id', 'name', 'image', DB::raw('breadcrumbs_json as breadcrumbs')]);
+            $currentDir = DirectoryRepository::find(selects: ['id', 'parent_id', 'name', 'image', DB::raw('breadcrumbs_json as breadcrumbs')], wheres: ['id' => $request->input('subid'), 'root_id' => $request->input('rid')]);
         }
 
 
@@ -81,6 +85,7 @@ class DirectoryController extends Controller
                         'current' => $currentDir,
                         'list' => $list,
                     ],
+                    'errors' => [],
                 ],
                 Response::HTTP_OK
             );
@@ -90,6 +95,7 @@ class DirectoryController extends Controller
                     'code' => Response::HTTP_NOT_FOUND,
                     'message' => Response::$statusTexts[Response::HTTP_NOT_FOUND],
                     'results' => [],
+                    'errors' => [],
                 ],
                 Response::HTTP_NOT_FOUND
             );
@@ -106,6 +112,7 @@ class DirectoryController extends Controller
                 [
                     'code' => Response::HTTP_BAD_REQUEST,
                     'message' => Response::$statusTexts[Response::HTTP_BAD_REQUEST],
+                    'results' => [],
                     'errors' => $errors,
                 ],
                 Response::HTTP_BAD_REQUEST
@@ -126,6 +133,8 @@ class DirectoryController extends Controller
                 [
                     'code' => Response::HTTP_INTERNAL_SERVER_ERROR,
                     'message' => Response::$statusTexts[Response::HTTP_INTERNAL_SERVER_ERROR],
+                    'results' => [],
+                    'errors' => ['message' => Response::$statusTexts[Response::HTTP_INTERNAL_SERVER_ERROR]],
                 ],
                 Response::HTTP_INTERNAL_SERVER_ERROR
             );
@@ -136,6 +145,8 @@ class DirectoryController extends Controller
             [
                 'code' => Response::HTTP_CREATED,
                 'message' => Response::$statusTexts[Response::HTTP_CREATED],
+                'results' => [],
+                'errors' => [],
             ],
             Response::HTTP_CREATED
         );

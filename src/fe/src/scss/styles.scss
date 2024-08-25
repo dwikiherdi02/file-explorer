@@ -50,7 +50,7 @@ $success: #7952b3;
 // @import "bootstrap/scss/carousel";
 @import "bootstrap/scss/spinners";
 @import "bootstrap/scss/offcanvas"; // Requires transitions
-// @import "bootstrap/scss/placeholders";
+@import "bootstrap/scss/placeholders";
 
 // Helpers
 // @import "bootstrap/scss/helpers";
@@ -141,6 +141,12 @@ a {
 
   &:not(:empty)::after {
     margin-left: .25em;
+  }
+}
+
+.breadcrumb {
+  .breadcrumb-item {
+    font-size: 12px !important
   }
 }
 

@@ -1,10 +1,30 @@
 <script setup>
 // Images
-import imgDocument from '../assets/icons/file-storage.png'
-import imgMusic from '../assets/icons/music-folder.png'
-import imgPC from '../assets/icons/pc.png'
-import imgPicture from '../assets/icons/photo-gallery.png'
-import imgVideo from '../assets/icons/video-folder.png'
+import { onMounted, ref } from 'vue'
+
+// Stores
+import { useNavigationStore } from '../stores/navigation'
+
+const navigationStore = useNavigationStore()
+
+const onLoad = ref(0)
+
+const listNavigations = ref([])
+
+const load = async () => {
+  onLoad.value = 1
+  
+  const [results, errors] = await navigationStore.list();
+
+  listNavigations.value = results
+
+  onLoad.value = 0
+}
+
+onMounted(async () => {
+  await load()
+})
+
 </script>
 
 <template>
@@ -17,7 +37,25 @@ import imgVideo from '../assets/icons/video-folder.png'
       </div>
       <div class="offcanvas-body d-md-flex flex-column p-0 overflow-y-auto">
         <ul class="nav nav-pills flex-column mb-auto">
-          <li class="nav-item">
+
+          <li v-if="onLoad == 0" v-for="list in listNavigations" class="nav-item">
+            <router-link :to="{ name: 'to_folder', query: { rid: list.id } }" class="nav-link gap-2">
+              <span class="icon">
+                <img :src="list.image" :alt="list.name">
+              </span>
+              <span class="text">
+                {{ list.name }}
+              </span>
+            </router-link>
+          </li>
+          
+          <li v-if="onLoad == 1" v-for="n in 4" class="nav-item placeholder-glow mb-2"> 
+            <a class="nav-link gap-2 placeholder" href="#">
+              <span class="icons placeholder"></span>
+              <span class="text placeholder"></span>
+            </a>
+          </li>
+          <!-- <li class="nav-item">
             <RouterLink class="nav-link gap-2" to="/f/documents">
               <span class="icon">
                 <img :src="imgDocument" alt="Document">
@@ -56,7 +94,7 @@ import imgVideo from '../assets/icons/video-folder.png'
                 Videos
               </span>
             </RouterLink>
-          </li>
+          </li> -->
         </ul>
       </div>
     </div>
