@@ -59,9 +59,9 @@ class DirectoryController extends Controller
         }
 
         if (empty($request->input('subid'))) {
-            $currentDir = DirectoryRepository::findByID(id: $request->input('rid'), selects: ['id', 'parent_id', 'name', 'image', DB::raw('breadcrumbs_json as breadcrumbs')]);
+            $currentDir = DirectoryRepository::findByID(id: $request->input('rid'), selects: ['id', 'root_id', 'parent_id', 'name', 'image', DB::raw('breadcrumbs_json as breadcrumbs')]);
         } else {
-            $currentDir = DirectoryRepository::find(selects: ['id', 'parent_id', 'name', 'image', DB::raw('breadcrumbs_json as breadcrumbs')], wheres: ['id' => $request->input('subid'), 'root_id' => $request->input('rid')]);
+            $currentDir = DirectoryRepository::find(selects: ['id', 'root_id', 'parent_id', 'name', 'image', DB::raw('breadcrumbs_json as breadcrumbs')], wheres: ['id' => $request->input('subid'), 'root_id' => $request->input('rid')]);
         }
 
 
