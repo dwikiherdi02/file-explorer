@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Directory extends Model
 {
@@ -51,6 +52,11 @@ class Directory extends Model
     //     return $this->hasOne(Directory::class, 'name', 'root_dir');
     // }
 
+    public function rootid(): HasOne
+    {
+        return $this->hasOne(Directory::class, 'id', 'root_id');
+    }
+
     /**
      * Get all of the sub directories for the Directory
      *
@@ -69,6 +75,11 @@ class Directory extends Model
     public function parentdir(): HasOne
     {
         return $this->hasOne(Directory::class, 'id', 'parent_id');
+    }
+
+    public function files(): MorphMany
+    {
+        return $this->morphMany(File::class, 'commentable');
     }
 
 }

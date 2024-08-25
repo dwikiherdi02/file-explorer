@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\DirectoryRequest;
+use Facades\App\Repositories\FileRepository;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
@@ -71,10 +72,25 @@ class DirectoryController extends Controller
         }
 
         $list = DirectoryRepository::findAll(
-            selects: ['id', 'root_id', 'name', 'image'],
+            selects: ['id', 'root_id', 'name', 'image', DB::raw("'dir' as type")],
             wheres: $where,
             limit: 0,
         )->toArray();
+
+        $files = FileRepository::findAll(
+            selects: ['filename_ori', 'icon', 'path', 'filename', DB::raw("'file' as type")],
+            wheres: ['fileable_type' => get_class($currentDir), 'fileable_id' => $currentDir->id],
+            limit: 0,
+        );
+
+        foreach ($files as $file) {
+            array_push($list, [
+                'filename_ori' => $file->filename_ori,
+                'icon' => $file->icon,
+                'link' => $file->link,
+                'type' => $file->type,
+            ]);
+        }
 
         if (!empty($currentDir)) {
             return response()->json(
