@@ -17,6 +17,13 @@ export const useDirectoryStore = defineStore('directory', {
             return responses
           }
         )
-      }
+      },
+      createDir(parentID, folderName) {
+        return DirectoryService.createDir(parentID, folderName).then(
+          (responses) => {
+            return responses
+          }
+        )
+      },
     }
 });

@@ -95,6 +95,8 @@ a {
 }
 
 .btn {
+  background-image: none !important;
+  
   &-with-icon {
     display: flex !important;
     flex-direction: row !important;
@@ -116,6 +118,17 @@ a {
     span.text {
       width: 80% !important;
     }
+  }
+}
+
+.modal-sheet {
+  .modal-dialog {
+    // width: 380px;
+    transition: bottom .75s ease-in-out;
+  }
+
+  .modal-footer {
+    padding-bottom: 2rem;
   }
 }
 
