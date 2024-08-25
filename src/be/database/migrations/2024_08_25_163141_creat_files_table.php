@@ -18,7 +18,7 @@ return new class extends Migration {
             $table->text('path');
             $table->string('icon', 100);
             $table->string('extension', 5);
-            $table->string('mime_type', 20);
+            $table->string('mime_type', 255);
             $table->integer('size')->unsigned();
             $table->integer('width')->unsigned()->nullable();
             $table->integer('heigth')->unsigned()->nullable();

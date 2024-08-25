@@ -105,7 +105,6 @@ class FileRepository
                 $model = new File();
 
                 $model->fill($data)->save();
-
                 DB::commit();
                 return true;
             } catch (\Exception $e) {
