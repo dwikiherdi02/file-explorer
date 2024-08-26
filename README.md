@@ -14,8 +14,8 @@ Pada fungsi unggah file, terdapat validasi berkas yang dapat di unggah pada seti
 - Videos: mp4
 
 
-## Instal aplikasi
-Terdapat 2 metode untuk menginstal aplikasi di *local computer*. pertama dengan docker compose yang telah di sediakan, dan yang ke dua dengan cara manual. Berikut tautan cara menginstal aplikasi ***File Explorer***:
+## Install aplikasi
+Terdapat 2 metode untuk menginstall aplikasi di *local computer*. pertama dengan docker compose yang telah di sediakan, dan yang ke dua dengan cara manual. Berikut tautan cara menginstall aplikasi ***File Explorer***:
 
 ### Docker Compose
 [Dalam tahap pengembangan]
