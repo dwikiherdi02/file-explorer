@@ -1,12 +1,12 @@
 # File Explorer
-***File Explorer*** merupakan contoh halaman web yang menyerupai *Windows Explorer* yang memiliki 3 fungsi utama di antaranya:
+***File Explorer*** adalah sebuah aplikasi berbasis web yang dirancang menyerupai *Windows Explorer*. Aplikasi ini terbangun atas dua komponen utama: **frontend** yang bertanggung jawab atas tampilan visual dan interaksi pengguna, serta **backend** yang mengelola data dan proses di balik layar. Seluruh kode sumber aplikasi ini terorganisir dalam direktori ```./src```. ***File Explorer*** memiliki empat fungsi utama, yaitu
 
 - Menampikan folder utama (Documents, Music, Pictures, dan Videos)
 - Menampikan sub folder
 - Membuat sub folder baru
-- *Upload file*
+- Unggah berkas
 
-Pada fungsi upload file, terdapat validasi berkas yang dapat di unggah pada setiap folder utama. Berikut adalah validasi berkas pada masing - masing folder:
+Pada fungsi unggah file, terdapat validasi berkas yang dapat di unggah pada setiap folder utama. Berikut adalah validasi berkas pada masing - masing folder:
 
 - Documents: docx,doc,pdf
 - Music: mp3
