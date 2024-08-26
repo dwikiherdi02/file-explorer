@@ -28,3 +28,6 @@ Terdapat 2 metode untuk menginstal aplikasi di *local computer*. pertama dengan 
 ![File-Explorer-Home](https://github.com/user-attachments/assets/fbc48dab-e599-4e25-a077-b68b3eba04ef)
 
 ![File-Explorer-Sub-Folder](https://github.com/user-attachments/assets/76c4510a-e3f0-45a3-bb09-8232f7ec0d89)
+
+[File-Explorer.webm](https://github.com/user-attachments/assets/03d291fa-08ff-4e33-a7dd-9ff747a44002)
+
