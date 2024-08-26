@@ -1,5 +1,5 @@
 # File Explorer
-***File Explorer*** adalah sebuah aplikasi berbasis web yang dirancang menyerupai *Windows Explorer*. Aplikasi ini terbangun atas dua komponen utama: **frontend** yang bertanggung jawab atas tampilan visual dan interaksi pengguna, serta **backend** yang mengelola data dan proses di balik layar. Seluruh kode sumber aplikasi ini terorganisir dalam direktori ```./src```. ***File Explorer*** memiliki empat fungsi utama, yaitu
+***File Explorer*** adalah sebuah aplikasi berbasis web yang dirancang menyerupai *Windows Explorer*. Aplikasi ini terbangun atas dua komponen utama: **frontend** yang bertanggung jawab atas tampilan visual dan interaksi pengguna, serta **backend** yang mengelola data dan proses di balik layar. Seluruh kode sumber aplikasi ini terorganisir dalam direktori ```./src```. ***File Explorer*** memiliki empat fungsi utama, yaitu:
 
 - Menampikan folder utama (Documents, Music, Pictures, dan Videos)
 - Menampikan sub folder
