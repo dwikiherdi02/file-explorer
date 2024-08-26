@@ -25,7 +25,6 @@ Terdapat 2 metode untuk menginstal aplikasi di *local computer*. pertama dengan 
 - [Cara Install Frontend](https://github.com/dwikiherdi02/file-explorer/blob/main/src/fe/README.md)
 
 ## Tampilan Aplikasi
-    
-![File-Explorer-Home.png](https://github.com/dwikiherdi02/file-explorer/blob/main/sample-image/File-Explorer-Home.png)
-    
-![File-Explorer-Sub-Folder.png](https://github.com/dwikiherdi02/file-explorer/blob/main/sample-image/File-Explorer-Sub-Folder.png)
+![File-Explorer-Home](https://github.com/user-attachments/assets/fbc48dab-e599-4e25-a077-b68b3eba04ef)
+
+![File-Explorer-Sub-Folder](https://github.com/user-attachments/assets/76c4510a-e3f0-45a3-bb09-8232f7ec0d89)
