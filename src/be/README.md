@@ -40,4 +40,7 @@ php artisan migrate
 
 # Seeding Default Data
 php artisan db:seed
+
+# Running Application
+php artisan serve
 ```
