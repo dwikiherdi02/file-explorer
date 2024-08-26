@@ -1,4 +1,5 @@
 # Backend Apps
+
 Aplikasi *backend* ini dibangun menggunakan *framework* Laravel versi 11. Untuk dapat menjalankan aplikasi ini dengan baik, perangkat Anda harus memenuhi persyaratan sistem minimum berikut:
 
 #### Persyaratan Server
@@ -25,22 +26,39 @@ Setelah memastikan perangkat Anda memenuhi semua persyaratan, Anda perlu mengkon
 Jika telah selesai, langkah selanjutnya adalah menginstal aplikasi *backend* dengan mengikuti petunjuk di bawah ini.
 
 ## Install Aplikasi
-```php
-# Installing package
-composer install
 
-# Generate APP_KEY in .env
+Install Packages
+
+```sh 
+composer install 
+```
+
+Generate APP_KEY in .env
+
+```sh 
 php artisan key:generate
+```
 
-# Generate link (symlink) storage
+Generate link (symlink) storage 
+
+```sh
 php artisan storage:link
+```
 
-# Migrating Database
+Migrating Database
+
+```sh
 php artisan migrate
+```
 
-# Seeding Default Data
+Seeding Default Data
+
+```sh
 php artisan db:seed
+```
 
-# Running Application
+Running Application
+
+```sh
 php artisan serve
 ```

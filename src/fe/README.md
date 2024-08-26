@@ -1,16 +1,33 @@
-# Bootstrap w/ Vue
+# Frontend Apps
 
-Include [Bootstrap](https://getbootstrap.com)'s source Sass and individual JavaScript plugins with [Vue](https://vuejs.org) and [Vite](https://vitejs.dev/).
+Aplikasi *frontend* ini dibangun menggunakan *framework* VueJS versi 3.4.21 + Vite versi 5.2.7. Untuk dapat menjalankan aplikasi ini dengan baik, perangkat Anda harus memenuhi persyaratan sistem minimum berikut:
 
-## Edit in browser
+#### Persyaratan Server
+- NodeJS versi 20.16.0
+- NPM versi 10.8.1
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/twbs/examples/tree/main/vue?file=index.html)
+Setelah memastikan perangkat Anda memenuhi semua persyaratan, Anda perlu mengkonfigurasi aplikasi dengan cara:
+- Duplikat file ```.env.example``` dan ganti namanya menjadi ```.env```.
+- Edit file ```.env``` yang baru saja dibuat. Isi nilai setiap variabel sesuai dengan pengaturan perangkat Anda (misalnya, backend url).
 
-## How to use
+Jika telah selesai, langkah selanjutnya adalah menginstal aplikasi *backend* dengan mengikuti petunjuk di bawah ini.
+
+## Install Aplikasi
+
+Install Packages
 
 ```sh
-git clone https://github.com/twbs/examples.git
-cd examples/vue/
 npm install
+```
+
+Running Application
+
+```sh
 npm start
+```
+
+Or Build the Application
+
+```sh
+npm run build
 ```
