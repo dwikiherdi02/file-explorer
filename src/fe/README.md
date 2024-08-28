@@ -10,7 +10,7 @@ Setelah memastikan perangkat Anda memenuhi semua persyaratan, Anda perlu mengkon
 - Duplikat file ```.env.example``` dan ganti namanya menjadi ```.env```.
 - Edit file ```.env``` yang baru saja dibuat. Isi nilai setiap variabel sesuai dengan pengaturan perangkat Anda (misalnya, backend url).
 
-Jika telah selesai, langkah selanjutnya adalah menginstal aplikasi *backend* dengan mengikuti petunjuk di bawah ini.
+Jika telah selesai, langkah selanjutnya adalah menginstal aplikasi *frontend* dengan mengikuti petunjuk di bawah ini.
 
 ## Install Aplikasi
 
